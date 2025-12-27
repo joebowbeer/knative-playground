@@ -28,6 +28,12 @@ kind create cluster --name knative-playground
 curl -sSL -o kn https://github.com/knative/client/releases/download/knative-v1.20.0/kn-linux-amd64
 chmod +x kn
 sudo mv kn /usr/local/bin/
+kn version
+
+curl -sSL -o kn-quickstart https://github.com/knative-extensions/kn-plugin-quickstart/releases/download/knative-v1.20.0/kn-quickstart-linux-amd64
+chmod +x kn-quickstart
+sudo mv kn-quickstart /usr/local/bin/
+kn quickstart --help
 
 # kubectl config set-context --current --namespace=argocd
 # argocd login --core
