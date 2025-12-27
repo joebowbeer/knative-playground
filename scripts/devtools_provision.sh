@@ -25,6 +25,10 @@ kind create cluster --name knative-playground
 # chmod +x argocd
 # sudo mv argocd /usr/local/bin/
 
+curl -sSL -o kn https://github.com/knative/client/releases/download/knative-v1.20.0/kn-linux-amd64
+chmod +x kn
+sudo mv kn /usr/local/bin/
+
 # kubectl config set-context --current --namespace=argocd
 # argocd login --core
 # argocd admin dashboard -n argocd
