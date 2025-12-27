@@ -8,8 +8,8 @@ sudo apt update
 
 # npm install --global @restatedev/restate@latest
 
-kind delete cluster --name knative
-kind create cluster --name knative
+# kind delete cluster --name knative
+# kind create cluster --name knative
 
 # helm repo add headlamp https://kubernetes-sigs.github.io/headlamp/
 # helm upgrade --install headlamp headlamp/headlamp --namespace kube-system
@@ -34,6 +34,10 @@ curl -sSL -o kn-quickstart https://github.com/knative-extensions/kn-plugin-quick
 chmod +x kn-quickstart
 sudo mv kn-quickstart /usr/local/bin/
 # kn quickstart --help
+
+curl -sSL -o func https://github.com/knative/func/releases/download/knative-v1.20.1/func_linux_amd64
+chmod +x func
+sudo mv func /usr/local/bin/
 
 # kubectl config set-context --current --namespace=argocd
 # argocd login --core
