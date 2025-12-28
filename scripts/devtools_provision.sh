@@ -25,6 +25,15 @@ sudo apt update
 # chmod +x argocd
 # sudo mv argocd /usr/local/bin/
 
+# kubectl config set-context --current --namespace=argocd
+# argocd login --core
+# argocd admin dashboard -n argocd
+
+# arkade install crossplane
+# TODO: https://github.com/alexellis/arkade/issues/1239
+# helm upgrade --install crossplane -n crossplane-system --create-namespace \
+#   https://charts.crossplane.io/stable/crossplane-2.1.3.tgz
+
 curl -sSL -o kn https://github.com/knative/client/releases/download/knative-v1.20.0/kn-linux-amd64
 chmod +x kn
 sudo mv kn /usr/local/bin/
@@ -39,13 +48,9 @@ curl -sSL -o func https://github.com/knative/func/releases/download/knative-v1.2
 chmod +x func
 sudo mv func /usr/local/bin/
 
-# kubectl config set-context --current --namespace=argocd
-# argocd login --core
-# argocd admin dashboard -n argocd
+kind delete cluster -n knative
+kn quickstart kind --registry --install-serving
 
-# arkade install crossplane
-# TODO: https://github.com/alexellis/arkade/issues/1239
-# helm upgrade --install crossplane -n crossplane-system --create-namespace \
-#   https://charts.crossplane.io/stable/crossplane-2.1.3.tgz
+export FUNC_REGISTRY=localhost:5001
 
 echo "[END] Install dev tools"

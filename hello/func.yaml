@@ -3,4 +3,11 @@
 specVersion: 0.36.0
 name: hello
 runtime: go
+registry: localhost:5001
+namespace: default
 created: 2025-12-27T09:04:05.157497235Z
+build:
+  builder: pack
+deploy:
+  namespace: default
+  image: localhost:5001/hello@sha256:0d22cce4c045c2edb6ad6ea35adcfc7dd98fe97e010170172f8ecf908b84c732
