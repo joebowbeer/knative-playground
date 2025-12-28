@@ -10,4 +10,4 @@ build:
   builder: pack
 deploy:
   namespace: default
-  image: localhost:5001/hello@sha256:0d22cce4c045c2edb6ad6ea35adcfc7dd98fe97e010170172f8ecf908b84c732
+  image: localhost:5001/hello@sha256:0a98c534ba1aae28413adc39f0aed19235efef9308df40ff9f265fb82abfcebc
