@@ -6,6 +6,10 @@
         "memory": "16gb",
         "storage": "32gb"
     },
+    "remoteEnv": {
+        "FUNC_REGISTRY": "localhost:5001",
+        "KO_DOCKER_REPO": "localhost:5001"
+    },
     "features": {
         "ghcr.io/devcontainers/features/docker-in-docker:2": {
             "version": "latest",
@@ -20,7 +24,7 @@
             "helm": "latest",
             "k9s": "latest",
             "kind": "latest",
-            "kubectl": "latest"
+            "kubectl": "v1.35.0"
             // "kustomize": "v5.7.1"
             // "vcluster": "latest"
         },
@@ -44,7 +48,8 @@
     "customizations": {
         "vscode": {
             "extensions": [
-                "ms-vscode.go"
+                "ms-vscode.go",
+                "ms-vscode.makefile-tools"
                 // "charliermarsh.ruff",
                 // "kevinrose.vsc-python-indent",
                 // "ms-python.python",
@@ -52,8 +57,5 @@
             ]
         }
     },
-    "postCreateCommand": "bash scripts/devtools_provision.sh",
-    "remoteEnv": {
-        "FUNC_REGISTRY": "localhost:5001"
-    }
+    "postCreateCommand": "bash scripts/devtools_provision.sh"
 }

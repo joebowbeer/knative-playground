@@ -6,7 +6,7 @@ sudo apt update
 
 # sudo apt install -y nano curl zip unzip git zsh bat httpie
 
-# npm install --global @restatedev/restate@latest
+npm install --global @restatedev/restate@latest
 
 # kind delete cluster --name knative
 # kind create cluster --name knative
@@ -34,27 +34,28 @@ sudo apt update
 # helm upgrade --install crossplane -n crossplane-system --create-namespace \
 #   https://charts.crossplane.io/stable/crossplane-2.1.3.tgz
 
-curl -sSL -o kn https://github.com/knative/client/releases/download/knative-v1.20.0/kn-linux-amd64
+export KNATIVE_VERSION=v1.20.0
+export FUNC_VERSION=v1.20.1
+
+curl -sSL -o kn https://github.com/knative/client/releases/download/knative-$KNATIVE_VERSION/kn-linux-amd64
 chmod +x kn
 sudo mv kn /usr/local/bin/
 # kn version
 
-curl -sSL -o kn-quickstart https://github.com/knative-extensions/kn-plugin-quickstart/releases/download/knative-v1.20.0/kn-quickstart-linux-amd64
+curl -sSL -o kn-quickstart https://github.com/knative-extensions/kn-plugin-quickstart/releases/download/knative-$KNATIVE_VERSION/kn-quickstart-linux-amd64
 chmod +x kn-quickstart
 sudo mv kn-quickstart /usr/local/bin/
 # kn quickstart --help
 
-curl -sSL -o func https://github.com/knative/func/releases/download/knative-v1.20.1/func_linux_amd64
+curl -sSL -o func https://github.com/knative/func/releases/download/knative-$FUNC_VERSION/func_linux_amd64
 chmod +x func
 sudo mv func /usr/local/bin/
 
 kind delete cluster -n knative
-kn quickstart kind --registry --install-serving
+kn quickstart kind -k 1.35.0 --install-serving --registry
 
 helm upgrade --install restate -n restate --create-namespace \
   oci://ghcr.io/restatedev/restate-helm
-
-npm install --global @restatedev/restate@latest
 
 # kubectl port-forward -n restate svc/restate 9070:9070 8080:8080
 # restate whoami
