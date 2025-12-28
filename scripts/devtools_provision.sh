@@ -56,7 +56,7 @@ helm upgrade --install restate -n restate --create-namespace \
 
 npm install --global @restatedev/restate@latest
 
-kubectl port-forward -n restate svc/restate 9070:9070 8080:8080
-restate whoami
+# kubectl port-forward -n restate svc/restate 9070:9070 8080:8080
+# restate whoami
 
 echo "[END] Install dev tools"
