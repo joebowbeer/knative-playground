@@ -51,4 +51,12 @@ sudo mv func /usr/local/bin/
 kind delete cluster -n knative
 kn quickstart kind --registry --install-serving
 
+helm upgrade --install restate -n restate --create-namespace \
+  oci://ghcr.io/restatedev/restate-helm
+
+npm install --global @restatedev/restate@latest
+
+kubectl port-forward -n restate svc/restate 9070:9070 8080:8080
+restate whoami
+
 echo "[END] Install dev tools"
