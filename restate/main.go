@@ -94,7 +94,7 @@ func (t *signupService) Signup(ctx restate.Context, newUser NewUser) (string, er
 	awakeable := restate.Awakeable[restate.Void](ctx)
 
 	// Send the activation email
-	_, err = restate.Run[restate.Void](ctx, func(ctx restate.RunContext) (restate.Void, error) {
+	_, err = restate.Run(ctx, func(ctx restate.RunContext) (restate.Void, error) {
 		err := sendEmail(ctx.Log(), newUser.Username, awakeable.Id())
 		return restate.Void{}, err
 	})
