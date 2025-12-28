@@ -51,6 +51,4 @@ sudo mv func /usr/local/bin/
 kind delete cluster -n knative
 kn quickstart kind --registry --install-serving
 
-export FUNC_REGISTRY=localhost:5001
-
 echo "[END] Install dev tools"

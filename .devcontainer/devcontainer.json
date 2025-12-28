@@ -41,5 +41,8 @@
             ]
         }
     },
-    "postCreateCommand": "bash scripts/devtools_provision.sh"
+    "postCreateCommand": "bash scripts/devtools_provision.sh",
+    "remoteEnv": {
+        "FUNC_REGISTRY": "localhost:5001"
+    }
 }
