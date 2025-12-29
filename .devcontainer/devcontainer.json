@@ -59,6 +59,6 @@
         }
     },
     "forwardPorts": [8080, 9070],
-    "postCreateCommand": "bash scripts/devtools_provision.sh",
-    "postStartCommand": "nohup bash -c 'kubectl port-forward -n restate svc/restate 9070:9070 8080:8080' &"
+    "postCreateCommand": "./scripts/post-create.sh",
+    "postStartCommand": "nohup ./scripts/post-start.sh"
 }
