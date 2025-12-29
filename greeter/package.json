@@ -1,0 +1,19 @@
+{
+  "name": "greeter",
+  "version": "0.0.0",
+  "description": "Examples of the basic concepts of Restate",
+  "type": "module",
+  "license": "MIT",
+  "author": "Restate developers",
+  "scripts": {
+    "start": "node index.ts"
+  },
+  "dependencies": {
+    "@restatedev/restate-sdk": "^1.9.1",
+    "@restatedev/restate-sdk-clients": "^1.9.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.4",
+    "typescript": "^5.0.2"
+  }
+}
