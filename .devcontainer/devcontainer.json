@@ -24,8 +24,9 @@
             "helm": "latest",
             "k9s": "latest",
             "kind": "latest",
-            "kubectl": "v1.35.0"
+            "kubectl": "v1.35.0",
             // "kustomize": "v5.7.1"
+            "pack": "latest"
             // "vcluster": "latest"
         },
         "ghcr.io/robbert229/devcontainer-features/ko:1": {
@@ -57,5 +58,7 @@
             ]
         }
     },
-    "postCreateCommand": "bash scripts/devtools_provision.sh"
+    "forwardPorts": [8080, 9070],
+    "postCreateCommand": "bash scripts/devtools_provision.sh",
+    "postStartCommand": "nohup bash -c 'kubectl port-forward -n restate svc/restate 9070:9070 8080:8080' &"
 }

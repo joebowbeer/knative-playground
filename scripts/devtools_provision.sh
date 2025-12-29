@@ -2,40 +2,10 @@
 
 echo "[START] Install dev tools"
 
-sudo apt update
-
-# sudo apt install -y nano curl zip unzip git zsh bat httpie
-
 npm install --global @restatedev/restate@latest
 
-# kind delete cluster --name knative
-# kind create cluster --name knative
-
-# helm repo add headlamp https://kubernetes-sigs.github.io/headlamp/
-# helm upgrade --install headlamp headlamp/headlamp --namespace kube-system
-
-# export ARGOCD_VERSION=v3.2.1
-
-# arkade install argocd does not provide argocd core option
-# kubectl create namespace argocd
-# kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/$ARGOCD_VERSION/manifests/core-install.yaml
-
-# Installed by arkade-get feature
-# curl -sSL -o argocd https://github.com/argoproj/argo-cd/releases/download/$ARGOCD_VERSION/argocd-linux-amd64
-# chmod +x argocd
-# sudo mv argocd /usr/local/bin/
-
-# kubectl config set-context --current --namespace=argocd
-# argocd login --core
-# argocd admin dashboard -n argocd
-
-# arkade install crossplane
-# TODO: https://github.com/alexellis/arkade/issues/1239
-# helm upgrade --install crossplane -n crossplane-system --create-namespace \
-#   https://charts.crossplane.io/stable/crossplane-2.1.3.tgz
-
-export KNATIVE_VERSION=v1.20.0
-export FUNC_VERSION=v1.20.1
+KNATIVE_VERSION=v1.20.0
+FUNC_VERSION=v1.20.1
 
 curl -sSL -o kn https://github.com/knative/client/releases/download/knative-$KNATIVE_VERSION/kn-linux-amd64
 chmod +x kn
@@ -54,10 +24,7 @@ sudo mv func /usr/local/bin/
 kind delete cluster -n knative
 kn quickstart kind -k 1.35.0 --install-serving --registry
 
-helm upgrade --install restate -n restate --create-namespace \
+helm upgrade --install restate -n restate --create-namespace --wait \
   oci://ghcr.io/restatedev/restate-helm
-
-# kubectl port-forward -n restate svc/restate 9070:9070 8080:8080
-# restate whoami
 
 echo "[END] Install dev tools"
