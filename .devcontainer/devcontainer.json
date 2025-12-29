@@ -24,11 +24,12 @@
             "helm": "latest",
             "k9s": "latest",
             "kind": "latest",
-            "kubectl": "v1.35.0",
+            "kubectl": "v1.35.0"
             // "kustomize": "v5.7.1"
-            "pack": "latest"
+            // "pack": "latest"
             // "vcluster": "latest"
         },
+        // "ghcr.io/navinkrishnan/devcontainer-features-btp/pack:1": {},
         "ghcr.io/robbert229/devcontainer-features/ko:1": {
             "version": "0.18.1"
         }

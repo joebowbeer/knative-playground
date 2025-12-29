@@ -8,6 +8,7 @@ Commands to try:
 kn version
 kn quickstart version
 func version
+pack version
 restate whoami
 ```
 

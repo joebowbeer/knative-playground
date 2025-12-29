@@ -18,6 +18,7 @@ build-failure:
 # 		--tag localhost:5001/greeter \
 # 		--insecure-registry localhost:5001 \
 
+# FIXME: fails in vscode locally?
 apply:
 	kn service apply greeter \
 		--image localhost:5001/greeter \
