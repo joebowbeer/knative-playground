@@ -20,6 +20,8 @@ make apply
 make register
 ```
 
+In the Devcontainer Ports tab, click on port 9070 and open in a browser to view the Restate UI.
+
 Send some greetings:
 
 ```bash
