@@ -6,10 +6,8 @@ npm install --global @restatedev/restate@latest
 
 KNATIVE_VERSION=v1.20.0
 FUNC_VERSION=v1.20.1
-PACK_VERSION=v0.39.1
 
 KNATIVE_ARCH=""
-PACK_OS_ARCH=""
 
 architecture="$(uname -m)"
 
@@ -17,12 +15,10 @@ case "$architecture" in
     aarch64*|arm64*|arm*)
         echo "Platform is ARM architecture"
         KNATIVE_ARCH="arm64"
-        PACK_OS_ARCH="linux-arm64"
         ;;
     x86_64|amd64)
         echo "Platform is AMD/Intel (x86_64) architecture"
         KNATIVE_ARCH="amd64"
-        PACK_OS_ARCH="linux"
         ;;
     *)
         echo "Unknown or unsupported architecture: $architecture"
@@ -44,10 +40,6 @@ curl -sSL -o func https://github.com/knative/func/releases/download/knative-$FUN
 chmod +x func
 sudo mv func /usr/local/bin/
 # func version
-
-curl -sSL https://github.com/buildpacks/pack/releases/download/${PACK_VERSION}/pack-${PACK_VERSION}-${PACK_OS_ARCH}.tgz \
-  | sudo tar -xz -C /usr/local/bin/ pack
-# pack version
 
 kind delete cluster -n knative
 kn quickstart kind -k 1.35.0 --install-serving --registry

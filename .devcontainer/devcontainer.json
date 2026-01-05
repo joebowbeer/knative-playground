@@ -29,7 +29,7 @@
             // "pack": "latest"
             // "vcluster": "latest"
         },
-        // "ghcr.io/navinkrishnan/devcontainer-features-btp/pack:1": {},
+        "ghcr.io/navinkrishnan/devcontainer-features-btp/pack:1": {},
         "ghcr.io/robbert229/devcontainer-features/ko:1": {
             "version": "0.18.1"
         }
