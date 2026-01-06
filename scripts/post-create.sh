@@ -50,6 +50,7 @@ kn quickstart kind -k 1.35.0 --install-serving --registry
 helm upgrade --install restate -n restate --create-namespace --wait \
   oci://ghcr.io/restatedev/restate-helm
 
+# FIXME: https://github.com/knative-extensions/kn-plugin-quickstart/pull/611
 echo "[INFO] Patch tag resolving configuration (again?)"
 kubectl -n knative-serving patch cm config-deployment -p \
   '{"data":{"registries-skipping-tag-resolving":"localhost:5001"}}'
