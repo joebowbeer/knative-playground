@@ -44,12 +44,14 @@ sudo mv func /usr/local/bin/
 # func version
 
 kind delete cluster -n knative
+docker stop kind-registry || true
 kn quickstart kind -k 1.35.0 --install-serving --registry
-
-kubectl -n knative-serving patch cm config-deployment -p \
-  '{"data":{"registries-skipping-tag-resolving":"localhost:5001"}}'
 
 helm upgrade --install restate -n restate --create-namespace --wait \
   oci://ghcr.io/restatedev/restate-helm
+
+echo "[INFO] Patch tag resolving configuration (again?)"
+kubectl -n knative-serving patch cm config-deployment -p \
+  '{"data":{"registries-skipping-tag-resolving":"localhost:5001"}}'
 
 echo "[END] Install dev tools"
