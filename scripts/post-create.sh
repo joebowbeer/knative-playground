@@ -2,6 +2,8 @@
 
 echo "[START] Install dev tools"
 
+# apt-get update && apt-get install -y skopeo
+
 npm install --global @restatedev/restate@latest
 
 KNATIVE_VERSION=v1.20.0
@@ -43,6 +45,9 @@ sudo mv func /usr/local/bin/
 
 kind delete cluster -n knative
 kn quickstart kind -k 1.35.0 --install-serving --registry
+
+kubectl -n knative-serving patch cm config-deployment -p \
+  '{"data":{"registries-skipping-tag-resolving":"localhost:5001"}}'
 
 helm upgrade --install restate -n restate --create-namespace --wait \
   oci://ghcr.io/restatedev/restate-helm
